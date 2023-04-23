@@ -1,0 +1,229 @@
+:root{
+    --primary-color:#131316;
+    --secondary-color:rgb(70, 70, 128);
+}
+*{
+    box-sizing: border-box;
+    scroll-behavior:smooth;
+    /* overflow-x: hidden; */
+}
+body{
+    font-family: 'Libre Baskerville', serif;
+    color: #ffff;
+    padding: 0;
+    margin: 0;
+}
+
+/*=============== NAVBAR ===============*/
+
+.header{
+    /* font-family: Chivo Mono; */
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+}
+ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: space-evenly;
+    list-style: none;
+    padding: 20px;
+}
+a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: larger;
+}
+.menu-toggle{
+    display: none;
+}
+@media (max-width: 780px) {
+    .header{
+        display: block;
+        width: 250px;
+        border-bottom: none;
+        position: fixed;
+        top: 0;
+        left: -250px;
+        transition: all 500ms ease-in-out;
+    }
+    ul{
+        display: block;
+    }
+    li{
+        font-size: larger;
+        border-bottom: 1px solid goldenrod;
+        padding: 20px;
+        transition: all 400ms ease;
+    }
+    li:hover{
+        cursor: pointer;
+        transform: translateX(14px);
+    }
+    .menu-toggle{
+        display: block;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 5px;
+        right: -50px;
+        cursor: pointer;
+    }
+    span{
+        width: 100%;
+        height: 4px;
+        background-color: #dbdbe4;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 10px;
+    }
+    span:nth-child(1){
+        top: 10%;
+    }
+    span:nth-child(2){
+        top: 50%;
+    }
+    span:nth-child(3){
+        top: 90%;
+    }
+    .header.active span:nth-child(1){
+        top: 50%;
+        transform: translateY(-50%)
+        rotate(45deg);
+    }
+    .header.active span:nth-child(2){
+         display: none;
+    }
+    .header.active span:nth-child(3){
+        top: 50%;
+        transform: translateY(-50%)
+        rotate(-45deg);
+    }
+    .header.active{
+        left: 0;
+    }
+}
+
+/*=============== MAIN SECTION ===============*/
+
+.card{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(146, 146, 123);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.card img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.2);
+}
+.card-content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-2{
+    background-color: #7878b1;
+}
+.name{
+    font-size: 40px;
+    margin-left: 4px;
+    margin-bottom: 0px;
+    padding: 0;
+}
+.card-3{
+    background-color: rgb(194, 161, 31);
+}
+/*=============== INNER SECTION ===============*/
+
+section{
+    display: grid;
+    place-items: center;
+    align-content: center;
+    min-height: 100vh;
+}
+.hidden{
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+}
+@media(prefers-reduced-motion){
+    .hidden{
+        transition: none;
+    }
+}
+.show{
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+.logos{
+    display: flex;
+}
+.logo{
+    border: 2px solid white;
+    width: 70px;
+    height: 70px;
+    margin: 2px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.logo:nth-child(2) {
+    transition-delay: 200ms;
+}
+.logo:nth-child(3) {
+    transition-delay: 400ms;
+}
+.logo:nth-child(4) {
+    transition-delay: 600ms;
+}
+.logo:hover{
+    background-color: aliceblue;
+    color: var(--secondary-color);
+    cursor: pointer;
+    border: 2px solid var(--secondary-color);
+    transition: all 200ms ease-in;
+}
+
+/*=============== FOOTER =============== */
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*
+SideBar shows when window loads because of the intersection observers don't know how to fix that yet!
+So consider this as a feature not a bug ;)
+Shaan..
+*/
